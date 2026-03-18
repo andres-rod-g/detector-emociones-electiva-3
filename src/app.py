@@ -54,12 +54,14 @@ class App:
 
     def _detection_loop(self):
         """Runs in a background thread. Picks up frames and detects emotions."""
+        # GUÍA 5 | Loop while: mantiene el hilo de detección activo mientras la app corre
         while self._detecting:
             with self._detect_lock:
                 frame = self._latest_frame
 
             if frame is None:
                 time.sleep(0.01)
+                # GUÍA 5 | continue: salta el ciclo si no hay frame disponible aún
                 continue
 
             result = self._emotion_detector.detect(frame)

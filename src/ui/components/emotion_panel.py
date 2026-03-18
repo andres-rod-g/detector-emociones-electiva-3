@@ -51,7 +51,9 @@ class EmotionPanel(ctk.CTkFrame):
         )
         self._scroll_frame.pack(fill="both", expand=True, padx=10, pady=(0, 10))
 
+        # GUÍA 5 | Diccionario: almacena tarjetas de emoción indexadas por clave de emoción
         self._emotion_cards: dict[str, EmotionCard] = {}
+        # GUÍA 5 | Loop for: recorre todas las emociones para crear sus tarjetas en el panel
         for emotion_info in get_all_emotions():
             card = EmotionCard(self._scroll_frame, emotion_key=emotion_info.key, highlight=False)
             card.pack(fill="x", pady=1)
@@ -87,6 +89,7 @@ class EmotionPanel(ctk.CTkFrame):
         )
 
         # Update all emotion bars
+        # GUÍA 5 | Loop for: recorre el diccionario de tarjetas para actualizar cada barra de emoción
         for key, card in self._emotion_cards.items():
             emotion_info = get_emotion_info(key)
             confidence = result.all_emotions.get(key, 0.0)
@@ -105,6 +108,7 @@ class EmotionPanel(ctk.CTkFrame):
             confidence=0.0,
             description="Acerca tu rostro a la cámara para comenzar el análisis.",
         )
+        # GUÍA 5 | Loop for: recorre tarjetas para resetear confianzas cuando no hay rostro
         for key, card in self._emotion_cards.items():
             emotion_info = get_emotion_info(key)
             card.update(emotion_key=key, name=emotion_info.name, confidence=0.0)
