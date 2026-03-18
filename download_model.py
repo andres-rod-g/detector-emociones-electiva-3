@@ -25,6 +25,7 @@ def download():
     if os.path.exists(MODEL_PATH):
         os.remove(MODEL_PATH)
 
+    # GUÍA 5 | Loop for: recorre las URLs disponibles hasta lograr descargar el modelo
     for url in MODEL_URLS:
         try:
             print(f"Descargando modelo FERPlus ONNX (~35 MB)...")
@@ -40,6 +41,7 @@ def download():
             print(f"Error con esta URL: {e}")
             if os.path.exists(tmp_path):
                 os.remove(tmp_path)
+            # GUÍA 5 | continue: salta a la siguiente URL si la descarga falla
             continue
 
     print("ERROR: No se pudo descargar el modelo de ninguna fuente.")

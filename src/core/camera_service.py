@@ -51,6 +51,7 @@ class CameraService:
     def list_available(max_index: int = 5) -> list[int]:
         """Probe camera indices and return those that can be opened."""
         available = []
+        # GUÍA 5 | Loop for: recorre índices posibles de cámara para detectar las disponibles
         for i in range(max_index):
             cap = cv2.VideoCapture(i)
             if cap.isOpened():

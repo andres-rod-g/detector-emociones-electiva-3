@@ -11,6 +11,7 @@ class EmotionInfo:
     emoji: str
 
 
+# GUÍA 5 | Diccionario: catálogo de emociones con clave string y objeto EmotionInfo como valor
 _EMOTION_CATALOG: dict[str, EmotionInfo] = {
     "neutral": EmotionInfo(
         key="neutral",

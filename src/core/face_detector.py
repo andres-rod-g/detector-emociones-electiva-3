@@ -39,6 +39,7 @@ class FaceDetector:
 
         # Scale coordinates back to original frame size
         inv = 1.0 / scale
+        # GUÍA 5 | Loop for: recorre rostros detectados para escalar sus coordenadas al tamaño original
         return [(int(x * inv), int(y * inv), int(w_ * inv), int(h_ * inv)) for (x, y, w_, h_) in faces]
 
     def get_largest_face(self, faces: list[tuple[int, int, int, int]]) -> tuple[int, int, int, int] | None:

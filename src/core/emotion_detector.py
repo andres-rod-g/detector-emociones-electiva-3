@@ -15,7 +15,7 @@ class EmotionResult:
     face_box: tuple[int, int, int, int]
 
 
-# FER emotion keys -> our internal keys
+# GUÍA 5 | Diccionario: mapea claves de FER a claves internas del sistema de emociones
 _FER_KEY_MAP = {
     "angry": "anger",
     "disgust": "disgust",
@@ -47,6 +47,7 @@ class EmotionDetector:
         x, y, w, h = int(box[0]), int(box[1]), int(box[2]), int(box[3])
 
         raw_emotions = best["emotions"]
+        # GUÍA 5 | Diccionario: construye diccionario de emociones mapeadas con sus confianzas
         mapped_emotions = {
             _FER_KEY_MAP.get(k, k): float(v)
             for k, v in raw_emotions.items()
