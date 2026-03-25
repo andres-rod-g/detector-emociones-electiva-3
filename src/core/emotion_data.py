@@ -64,6 +64,7 @@ _EMOTION_CATALOG: dict[str, EmotionInfo] = {
     ),
 }
 
+# GUÍA 6 | Vector: lista ordenada de claves de emoción para recorrido secuencial
 EMOTION_KEYS = list(_EMOTION_CATALOG.keys())
 
 
@@ -74,4 +75,5 @@ def get_emotion_info(emotion_key: str) -> EmotionInfo:
 
 def get_all_emotions() -> list[EmotionInfo]:
     """Return all emotion info entries."""
+    # GUÍA 6 | Vector: retorna todas las emociones como lista para recorrido en panel
     return list(_EMOTION_CATALOG.values())

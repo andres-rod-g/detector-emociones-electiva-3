@@ -4,6 +4,7 @@ import os
 import urllib.request
 import shutil
 
+# GUÍA 6 | Vector: lista de URLs fuente ordenadas por prioridad de descarga
 MODEL_URLS = [
     "https://huggingface.co/onnxmodelzoo/emotion-ferplus-8/resolve/main/emotion-ferplus-8.onnx",
     "https://github.com/onnx/models/raw/main/validated/vision/"
