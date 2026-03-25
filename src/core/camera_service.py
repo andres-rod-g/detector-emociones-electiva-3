@@ -50,6 +50,7 @@ class CameraService:
     @staticmethod
     def list_available(max_index: int = 5) -> list[int]:
         """Probe camera indices and return those that can be opened."""
+        # GUÍA 6 | Vector: acumula índices de cámaras que se pueden abrir exitosamente
         available = []
         # GUÍA 5 | Loop for: recorre índices posibles de cámara para detectar las disponibles
         for i in range(max_index):

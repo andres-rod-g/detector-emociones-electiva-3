@@ -34,6 +34,7 @@ class App:
 
     def run(self):
         """Start the application."""
+        # GUÍA 6 | Vector: lista de índices de cámara disponibles para selección
         indices = list(range(self.MAX_CAMERA_INDEX + 1))
         self._window.set_camera_options(indices, self._camera.camera_index)
 

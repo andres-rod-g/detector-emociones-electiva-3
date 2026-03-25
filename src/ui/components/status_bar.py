@@ -12,6 +12,7 @@ class StatusBar(ctk.CTkFrame):
         super().__init__(master, corner_radius=8, fg_color="#16213e", height=36, **kwargs)
 
         self._on_camera_change = on_camera_change
+        # GUÍA 6 | Vector: almacena índices de cámaras disponibles para navegación cíclica
         self._available_indices: list[int] = []
         self._current_index = 0
 
@@ -63,6 +64,7 @@ class StatusBar(ctk.CTkFrame):
 
         try:
             pos = self._available_indices.index(self._current_index)
+            # GUÍA 6 | Validación de dimensión: usa len() para ciclar circularmente entre cámaras disponibles
             next_pos = (pos + 1) % len(self._available_indices)
         except ValueError:
             next_pos = 0

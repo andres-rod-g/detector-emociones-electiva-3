@@ -34,6 +34,7 @@ class FaceDetector:
             flags=cv2.CASCADE_SCALE_IMAGE,
         )
 
+        # GUÍA 6 | Validación de dimensión: verifica que el vector de rostros no esté vacío antes de procesar
         if len(faces) == 0:
             return []
 
