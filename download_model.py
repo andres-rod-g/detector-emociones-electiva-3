@@ -6,6 +6,7 @@ import shutil
 
 # GUÍA 6 | Vector: lista de URLs fuente ordenadas por prioridad de descarga
 MODEL_URLS = [
+    # GUÍA 7 | Cifrado en tránsito: descarga del modelo via HTTPS para proteger la transferencia
     "https://huggingface.co/onnxmodelzoo/emotion-ferplus-8/resolve/main/emotion-ferplus-8.onnx",
     "https://github.com/onnx/models/raw/main/validated/vision/"
     "body_analysis/emotion_ferplus/model/emotion-ferplus-8.onnx",
