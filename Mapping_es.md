@@ -30,3 +30,16 @@
 | Validación de dimensión (`len` rostros) | `src/core/face_detector.py` | 37 |
 | Vector (índices de cámara en status bar) | `src/ui/components/status_bar.py` | 15 |
 | Validación de dimensión (`len` cámaras ciclo) | `src/ui/components/status_bar.py` | 67 |
+
+## GUÍA 7: Diseño de Infraestructura de Persistencia y Seguridad Cloud
+
+| Concepto | Archivo | Línea |
+|---|---|---|
+| Almacenamiento local (offline-first) | N/A | — |
+| Cola de sincronización | N/A | — |
+| Sincronización HTTPS al cloud | N/A | — |
+| Cifrado en reposo (AES-256) | N/A | — |
+| Cifrado en tránsito (HTTPS/TLS) | `download_model.py` | 9 |
+| Autenticación JWT | N/A | — |
+| Gestión de roles/permisos | N/A | — |
+| Manejo de reconexión | N/A | — |
