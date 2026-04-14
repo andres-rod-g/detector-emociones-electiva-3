@@ -1,12 +1,15 @@
 import os
 from dataclasses import dataclass
 
+# GUÍA 5 | TensorFlow: backend de inferencia del modelo FER (logging suprimido)
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 import numpy as np
+# GUÍA 5 | FER: clasifica la emoción predominante desde el frame del rostro
 from fer.fer import FER
 
 
+# GUÍA 5 | dataclass: struct tipado para encapsular resultados de detección emocional
 @dataclass
 class EmotionResult:
     dominant_emotion: str
@@ -31,6 +34,7 @@ class EmotionDetector:
     """Detects faces and classifies emotions using the FER library."""
 
     def __init__(self):
+        # GUÍA 5 | FERPlus ONNX: modelo neuronal ~35MB entrenado en dataset FERPlus
         self._detector = FER(mtcnn=False)
 
     def detect(self, frame: np.ndarray) -> EmotionResult | None:

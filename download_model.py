@@ -1,11 +1,14 @@
 """Download the FERPlus ONNX emotion classification model."""
 
 import os
+# GUÍA 5 | urllib: descarga HTTPS del modelo ONNX en el primer arranque
 import urllib.request
+# GUÍA 5 | shutil: mueve el modelo descargado al directorio de destino final
 import shutil
 
 # GUÍA 6 | Vector: lista de URLs fuente ordenadas por prioridad de descarga
 MODEL_URLS = [
+    # GUÍA 5 | FERPlus ONNX: modelo neuronal ~35MB entrenado en dataset FERPlus
     # GUÍA 7 | Cifrado en tránsito: descarga del modelo via HTTPS para proteger la transferencia
     "https://huggingface.co/onnxmodelzoo/emotion-ferplus-8/resolve/main/emotion-ferplus-8.onnx",
     "https://github.com/onnx/models/raw/main/validated/vision/"
@@ -18,6 +21,7 @@ MODEL_PATH = os.path.join(MODEL_DIR, "emotion-ferplus-8.onnx")
 def download():
     os.makedirs(MODEL_DIR, exist_ok=True)
 
+    # GUÍA 6 | Despliegue: descarga automática del modelo ONNX en primer arranque (paso 5 del plan MDM)
     if os.path.exists(MODEL_PATH) and os.path.getsize(MODEL_PATH) > 1_000_000:
         size_mb = os.path.getsize(MODEL_PATH) / (1024 * 1024)
         print(f"El modelo ya existe en: {MODEL_PATH} ({size_mb:.1f} MB)")

@@ -1,4 +1,5 @@
 import time
+# GUÍA 5 | threading: hilo daemon ejecuta detección sin bloquear el event loop de UI
 import threading
 
 from src.core.camera_service import CameraService
@@ -28,6 +29,7 @@ class App:
         self._running = False
 
         # Detection runs in a background thread
+        # GUÍA 5 | Lock: sincroniza acceso al frame compartido entre hilo detección y UI
         self._detect_lock = threading.Lock()
         self._latest_frame = None
         self._detecting = False
@@ -38,6 +40,7 @@ class App:
         indices = list(range(self.MAX_CAMERA_INDEX + 1))
         self._window.set_camera_options(indices, self._camera.camera_index)
 
+        # GUÍA 6 | Despliegue: verificación de hardware requerido antes de iniciar la sesión
         if not self._camera.start():
             self._window.show_camera_error()
         else:
@@ -45,11 +48,13 @@ class App:
             self._start_detection_thread()
             self._schedule_update()
 
+        # GUÍA 5 | Tkinter: event loop y ventana principal de la aplicación
         self._window.mainloop()
 
     def _start_detection_thread(self):
         """Start the background emotion detection thread."""
         self._detecting = True
+        # GUÍA 5 | threading: hilo daemon ejecuta detección sin bloquear el event loop de UI
         thread = threading.Thread(target=self._detection_loop, daemon=True)
         thread.start()
 

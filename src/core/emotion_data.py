@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from src.theme.colors import EMOTION_COLORS, EMOTION_EMOJIS
 
 
+# GUÍA 5 | dataclass: struct tipado para encapsular resultados de detección emocional
 @dataclass(frozen=True)
 class EmotionInfo:
     key: str

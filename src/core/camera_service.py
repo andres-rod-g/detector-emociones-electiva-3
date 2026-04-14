@@ -13,6 +13,7 @@ class CameraService:
 
     def start(self) -> bool:
         """Open the camera. Returns True if successful."""
+        # GUÍA 5 | OpenCV: abre stream de la webcam USB a 30 FPS
         self._cap = cv2.VideoCapture(self._camera_index)
         if not self._cap.isOpened():
             self._cap = None

@@ -1,3 +1,4 @@
+# GUÍA 5 | CustomTkinter: widgets modernos de la interfaz gráfica del sistema
 import customtkinter as ctk
 
 from src.core.emotion_detector import EmotionResult

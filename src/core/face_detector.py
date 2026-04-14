@@ -7,6 +7,7 @@ class FaceDetector:
 
     def __init__(self, scale_factor: float = 1.3, min_neighbors: int = 5, min_size: int = 48):
         cascade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+        # GUÍA 5 | Haar Cascade: detección de rostros en frame local sin conexión
         self._cascade = cv2.CascadeClassifier(cascade_path)
         self._scale_factor = scale_factor
         self._min_neighbors = min_neighbors
@@ -14,6 +15,7 @@ class FaceDetector:
 
     def detect(self, frame: np.ndarray) -> list[tuple[int, int, int, int]]:
         """Detect faces in a BGR frame. Downscales internally for speed."""
+        # GUÍA 5 | OpenCV: preprocesamiento de frame antes de detección
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         # Downscale for faster detection
@@ -26,6 +28,7 @@ class FaceDetector:
 
         gray = cv2.equalizeHist(gray)
 
+        # GUÍA 5 | Haar Cascade: detección de rostros en frame local sin conexión
         faces = self._cascade.detectMultiScale(
             gray,
             scaleFactor=self._scale_factor,
