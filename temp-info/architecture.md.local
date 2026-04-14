@@ -1,0 +1,36 @@
+# Arquitectura - Detector Emociones
+
+## Stack
+- GUI: CustomTkinter (dark mode)
+- Cámara: OpenCV VideoCapture
+- Detección facial: Haar Cascade (cv2.CascadeClassifier)
+- Emociones: FERPlus ONNX (cv2.dnn.readNetFromONNX) - 8 emociones
+- Img convert: Pillow
+
+## Estructura
+- `src/core/` → lógica sin dependencia de UI
+- `src/ui/components/` → widgets reutilizables CTkFrame
+- `src/theme/` → colores, fuentes centralizados
+- `src/utils/` → conversión de imágenes
+
+## Componentes reutilizables
+- `EmotionCard` → 2 modos: highlight (grande) y compact (fila)
+- `VideoDisplay` → muestra video + overlay face box
+- `StatusBar` → indicadores de estado genéricos
+- `EmotionPanel` → orquesta cards
+
+## Modelo ONNX
+- Input: grayscale 64x64, float32 [0,1], shape (1,1,64,64)
+- Output: 8 logits → softmax → probabilidades
+- Emociones: neutral, happiness, surprise, sadness, anger, disgust, fear, contempt
+
+## Flujo principal
+App → CameraService.read_frame() → FaceDetector.detect() → EmotionDetector.detect() → MainWindow.update_frame()
+- Detección cada 3 frames para performance
+- FPS smoothing: exponential moving average
+
+## Normas
+- Max 250 líneas por archivo
+- SOLID principles
+- Componentizar todo lo reutilizable
+- UI en español, código en inglés
